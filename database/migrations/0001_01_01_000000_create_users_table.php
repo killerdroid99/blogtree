@@ -12,12 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->ulid('id')->primary();
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('google_avatar')->nullable();
+            $table->string('google_id')->unique();
+            $table->string('google_access_token');
+            $table->string('google_refresh_token')->nullable();
+            $table->integer('google_expires_in')->nullable();
             $table->timestamps();
         });
 
@@ -29,7 +31,8 @@ return new class extends Migration
 
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
-            $table->foreignId('user_id')->nullable()->index();
+            $table->ulid('user_id')->nullable()->index();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('SET NULL');
             $table->string('ip_address', 45)->nullable();
             $table->text('user_agent')->nullable();
             $table->longText('payload');
