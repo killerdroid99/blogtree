@@ -1,12 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('welcome');
-})->name('home');
+Route::get('/', [PostController::class, 'paginate'])->name('home');
+
+Route::get('/post/{id}', [PostController::class, 'show'])->name('post.show');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', function () {
