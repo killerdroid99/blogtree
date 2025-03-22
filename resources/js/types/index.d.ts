@@ -34,7 +34,7 @@ export interface User {
     id: number;
     name: string;
     email: string;
-    google_avatar_url?: string;
+    google_avatar?: string;
     created_at: string;
     updated_at: string;
     [key: string]: unknown; // This allows for additional properties...
