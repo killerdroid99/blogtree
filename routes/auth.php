@@ -32,8 +32,7 @@ Route::get('/redirect/google', function () {
         );
 
         Auth::login($user);
-        /*dd(Auth::user());*/
-        return redirect('/dashboard');
+        return redirect('/profile');
     } catch (\Exception $e) {
         dd($e);
         return 'Failed to login';
