@@ -19,7 +19,8 @@ class PostFactory extends Factory
         return [
             'title' => fake()->realTextBetween(10, 80),
             'body' => fake()->realTextBetween(20, 300),
-            'author_id' => '01jpy4azp999q50v8d70mqmrzb',
+            /*'author_id' => '01jpy4azp999q50v8d70mqmrzb',*/
+            'author_id' => '01jpwtf515x3dzf1pc4mn28dgn',
         ];
     }
 }
