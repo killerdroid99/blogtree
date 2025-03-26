@@ -2,6 +2,7 @@ import { User } from "@/types"
 import { Link } from "@inertiajs/react"
 import GoogleLoginBtn from "./google-login-btn"
 import LogoutBtn from "./logout-btn"
+import { Plus } from "lucide-react"
 
 interface Props {
     user?: User
@@ -27,6 +28,10 @@ function Header({ user }: Props) {
                                 </div>
                             </Link>
                             <LogoutBtn />
+                            <Link as="button" href="/create-post" className="btn btn-sm btn-accent">
+                                <Plus className="w-4" />
+                                Create post
+                            </Link>
                         </>
                         :
                         <>

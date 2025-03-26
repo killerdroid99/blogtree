@@ -22,10 +22,38 @@ export interface NavItem {
     isActive?: boolean;
 }
 
+export interface Author {
+    id: string;
+    name: string;
+    email: string;
+}
+
+export interface Post {
+    id: string;
+    title: string;
+    body: string;
+    author_name: string;
+    author_avatar:? string;
+    published_at: string;
+}
+
+export interface PaginatedPosts {
+    data: Post[];
+    links: { url: string; label: string; active: boolean }[];
+    current_page: number;
+    from: number;
+    last_page: number;
+    path: string;
+    per_page: number;
+    to: number;
+    total: number;
+}
+
 export interface SharedData {
     name: string;
     quote: { message: string; author: string };
     auth: Auth;
+    posts: PaginatedPosts;
     ziggy: Config & { location: string };
     [key: string]: unknown;
 }
