@@ -4,9 +4,9 @@ use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', [PostController::class, 'paginate'])->name('home');
+Route::get('', [PostController::class, 'paginate'])->name('home');
 
-Route::get('/post/{id}', [PostController::class, 'show'])->name('post.show');
+Route::get('post/{id}', [PostController::class, 'show'])->name('post.show');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', function () {
@@ -16,6 +16,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('profile', function () {
         return Inertia::render('profile');
     })->name('profile');
+
+    Route::get('create-post', [PostController::class, 'create'])->name('post.create');
+
+    Route::post('post', [PostController::class, 'store'])->name('post.store');
 });
 
 require __DIR__ . '/settings.php';
